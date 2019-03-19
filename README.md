@@ -105,7 +105,7 @@ console.log();
 
 Alert seems to only be able to print strings -- it may be good for informing a user of something, possibly upon a condition. In general, it seems like it is better suited for displaying user-oriented, front-facing information.
 
-Console.log seems more
+Console.log seems more developer oriented/facing, and designed to be used mostly for debugging. In addition to text, JavaScript objects and variables can be displayed in full in the console for developer to review and troubleshoot.
 
 * **What code would have to comment out to get rid of the pop-up box when you load the page? (Related to the last question.) Do that in the code file, and then, add code so that a text box will appear that contains the current date and time! *HINT:* Look through the rest of the code first...**
 
