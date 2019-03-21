@@ -109,15 +109,39 @@ Console.log seems more developer oriented/facing, and designed to be used mostly
 
 * **What code would have to comment out to get rid of the pop-up box when you load the page? (Related to the last question.) Do that in the code file, and then, add code so that a text box will appear that contains the current date and time! *HINT:* Look through the rest of the code first...**
 
+```js
+// alert("hello");
+alert(new Date());
+```
+
 * **How can you put your own name at the top where it currently says "A name"? Explain very briefly how to do so, and replace `A name` in the web page with your own name.**
 
+The below javascript statement selects the h1 tag from the HTML document, and re-assigns the content within that tag to "A name".
+```js
+document.querySelector('h1').innerHTML = "A name";
+```
+
+To replace that content with my own name, I simply change it to:
+```js
+document.querySelector('h1').innerHTML = "Matt Hanger";
+```
+
 * **What does the word `document` represent in this code? Explain briefly.**
+
+The document is the HTML document itself -- it is treated as an object by the javascript code, and therefore things can be selected from it and manipulated or overwritten by invoking javascript methods or altering object properties.
 
 * **What is happening in line 12 (
 		`document.querySelector('#items').innerHTML = document.getElementsByTagName('li').length`
 )? Explain, briefly (<= 2 sentences).**
 
+This statement selects the content in the HTML document between tags with the id of 'items', and then replaces them with the number of list items included in the document (taking a length of all list items in total in the document).
+
 * **What color would the background of this page be <u>if there were no JavaScript in this page</u>?**
+
+The background color of this page would be white without the following JavaScript code:
+```js
+body.style.background = "#CCEE00";
+```
 
 * **Why are there a couple of gray boxes on the screen with a different colored border? How could you edit this code to make them a different color? Explain briefly. Then edit the code to make those boxes some shade of blue, of your choosing.**
 
