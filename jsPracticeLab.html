@@ -22,15 +22,24 @@
 		body.style.background = "#CCEE00";
 		// One place to find color option codes: https://www.w3schools.com/colors/colors_picker.asp
 		body.style.margin = "10%";
+		var paras = document.querySelectorAll('p');
+		for (i = 0; paras.length; i++){
+		paras[i].style.background = "#076a7c";
+	};
 	}
 	//When someone uses the keyboard shortcut to copy the words "University of Michigan" then add the words "Go Blue" to the final div.  Each occurence should be on a separate line.
 	//Note that this code must be outside the other function above
 	function copyFunction(){
 		document.querySelector('#cheer').innerHTML += "Go blue!<br>"
 	}
-
+	function oCanada(){
+		document.querySelector('#cheer').innerHTML += "O Canada<br>"
+	}
 	function handleClick(){
 		alert("hello");
+	}
+	function springEquinox(){
+		alert("March 20, 2019");
 	}
 </script>
 <style>
@@ -63,7 +72,7 @@ p{
 	<ul>
 		<li>Kent State</li>
 		<li>University of Pittsburgh</li>
-		<li>McGill University</li>
+		<li oncopy="oCanada()">McGill University</li>
 		<li>California State University Long Beach</li>
 		<li oncopy="copyFunction()">University of Michigan</li>
 	</ul>
@@ -72,6 +81,7 @@ p{
 	</div>
 
 	<button onclick=handleClick() id="wow-button">Wow</button>
+	<button onclick=springEquinox() id="spring-button">Spring Equinox 2019</button>
 
 </body>
 </html>

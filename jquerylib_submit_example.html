@@ -17,6 +17,9 @@ $(document).ready(function(){
     $("form").submit(function(event){
         var regex = /^[a-zA-Z]+$/;
         var currentValue = $("#oneWord").val();
+        if(currentValue.toLowerCase() === "hello"){
+          $("#result").html('<p class="good">Hello to you too!</p>').show().fadeOut(10000);
+        } else
         if(regex.test(currentValue) == false){
             $("#result").html('<p class="error">Not valid!</p>').show().fadeOut(10000);
             // Preventing form submission
@@ -35,6 +38,6 @@ $(document).ready(function(){
         <input type="text" name="first-name" id="oneWord">
         <input type="submit" value="Submit">
         <div id="result"></div>
-    </form>    
+    </form>
 </body>
-</html>                            
+</html>

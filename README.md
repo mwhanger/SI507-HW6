@@ -3,7 +3,7 @@
 ## Some useful resources
 * Some [JavaScript tutorials](https://www.htmldog.com/guides/javascript/)
 * The complicated [resources in the You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series, including [your reading last week](https://github.com/getify/You-Dont-Know-JS/blob/master/up%20%26%20going/ch2.md)
-* [A resource for CSS/style/colors](https://htmlcolorcodes.com/)  
+* [A resource for CSS/style/colors](https://htmlcolorcodes.com/)
 * [An excerpt from a specific workshop site](https://witny-summer-guild-2018.github.io/day_4_exercise_2.html) (for a different audience than yourselves) which addresses some common questions about jQuery
 * [The simple JSFiddle example from class](https://jsfiddle.net/2of65j8q/)
 * A [W3Schools resource on JavaScript output](https://www.w3schools.com/js/js_output.asp)
@@ -55,9 +55,7 @@ Below are a bunch of questions and indications of things to do. For each indicat
 	* Correct answers to the questions
 	* Slightly more than half the 1000 points will come from answering the questions. The rest will come from your edits to the code.
 
-### Names of people you have worked with on this assignment
-* List everyone's names and uniqnames who have worked on this assignment with you, **including your own name, but make sure YOUR name is first and bold**
-* Like this:
+### My Name & other people I worked with on this assignment
 * **Matt Hanger (mhanger)**
 * Aaron Miller (aarondm)
 * Derek Bruckner (dbrucknr)
@@ -86,17 +84,21 @@ A code comment in JavaScript starts with //
 
 * **Explain what needs to happen to get a JavaScript program to "run", given the JavaScript you've seen in this assignment.**
 
-In order to run, a JavaScript program needs to be embedded in an HTML file with a script tag. The JavaScript can either be contained within the script tag, or the script tag can link to an external js file.
-```js
+In order to run, a JavaScript program needs to be embedded in an HTML file with a script tag. The JavaScript can either be contained within the script tag, or the script tag can link to an external js file. The javascript is actually executed via event handlers placed in certain HTML tags -- such as the "displayInformation" function being triggered when the body of the HTML page loads in a browser
+```html
 <script type="text/javascript">
+function consoleMessage() {
+console.log("js code goes here");
+};
 </script>
+<body onload = "consoleMessage();">
 ```
 
 * **What functions in JavaScript seem to be similar in function to the `print` function in Python? (There are two.) Why might you use one and not the other? Explain briefly.**
 
 The two functions in JavaScript similar to the `print` function in Python are as follows:
 ```js
-// Displays a message in a pop up window when the page is loaded
+// Displays a message in a pop up window when the page is loaded or a certain event happens
 alert();
 
 //Displays a message, object, or other information in the browser developer tools console
@@ -121,17 +123,16 @@ The below javascript statement selects the h1 tag from the HTML document, and re
 document.querySelector('h1').innerHTML = "A name";
 ```
 
-To replace that content with my own name, I simply change it to:
+To replace that content with my own name, I simply changed it to:
 ```js
 document.querySelector('h1').innerHTML = "Matt Hanger";
 ```
 
 * **What does the word `document` represent in this code? Explain briefly.**
 
-The document is the HTML document itself -- it is treated as an object by the javascript code, and therefore things can be selected from it and manipulated or overwritten by invoking javascript methods or altering object properties.
+The document is the HTML document itself -- it is treated as an object by the javascript code, and therefore things can be selected from it and manipulated or overwritten by invoking javascript methods or altering properties of the document object.
 
-* **What is happening in line 12 (
-		`document.querySelector('#items').innerHTML = document.getElementsByTagName('li').length`
+* **What is happening in line 12 (`document.querySelector('#items').innerHTML = document.getElementsByTagName('li').length`
 )? Explain, briefly (<= 2 sentences).**
 
 This statement selects the content in the HTML document between tags with the id of 'items', and then replaces them with the number of list items included in the document (taking a length of all list items in total in the document).
@@ -145,7 +146,17 @@ body.style.background = "#CCEE00";
 
 * **Why are there a couple of gray boxes on the screen with a different colored border? How could you edit this code to make them a different color? Explain briefly. Then edit the code to make those boxes some shade of blue, of your choosing.**
 
+A CSS selector is included within the style tags to add this gray color and these white borders to each paragraph marked with the html `<p>` tag. To change this I could have edited the color in the CSS selector, but instead I used a javascript for loop to select all paragraphs and change the color, and added it to the function that runs on page load:
+
+```js
+for (i = 0; paras.length; i++){
+	paras[i].style.background = "#076a7c";
+};
+```
+
 * **Edit the code so that, if you highlight `McGill University` and copy it, you see the text `O Canada` near the bottom of the page. Briefly explain why you made the edits that you did -- how did you know/figure out what to do?**
+
+I added another function very similar to the copyFunction() that places the text "Go blue!" at the bottom of the page when you try to copy University of Michigan. An event handler triggers the function when the text within its `<li>` tag is copied.
 
 * **In the original code, when you click the button that says `Wow`, you see a text box! Wow. Explain briefly in your own words why the following code causes that to happen:**
 
@@ -160,11 +171,11 @@ function handleClick(){
 <button onclick=handleClick() id="wow-button">Wow</button>
 ```
 
-
+The button in the html has an "onclick" event handler, which triggers the javascript handleClick function when someone clicks the button. This function then invokes the javascript 'alert' function, which displays a pop-up text box to the user.
 
 * **Knowing what you learned from the previous question, add code/markup to the `jsPracticeLab.html` file *so that* there is a button with the text `Spring Equinox 2019` on it somewhere on the page, and when that button is clicked, a text box containing the text `March 20, 2019` appears. (There's no function -- that I am aware of -- to automatically get this info, you've got to type it yourself.)**
 
-
+New function & button added -- see page.
 
 ### The next few questions address the `jquerylib_submit_example.html` file.
 
@@ -172,11 +183,19 @@ function handleClick(){
 
 * **When you enter input that isn't valid, you see an error that is red. Why is the error in red? Why is the response for valid inputs blue?**
 
+CSS selectors are defined in the 'style' html tag for an 'error' class (colored red) and a 'good' class (colored blue). When the submit button on the document is pressed, the jquery function within the HTML script tag runs, checking whether the text in the input box has only letters in it. If there are only letters, it inserts a paragraph tag with the 'good' class, styled as blue, in between the html div tags. If there are white spaces or numbers or any non-letter characters, it inserts a paragraph tag with the 'error' class, styled red.
+
 * **What is this line `var regex = /^[a-zA-Z]+$/;` helping with? And if you googled something to figure that out, what did you google, and what, briefly, did you learn? (If you didn't need to google, you can leave that out, but explain briefly what that line is helping the program do, anyway.)**
+
+This is a regular expression pattern looking for the start of a line, any character from lower case a through z or upper case A through Z, and the end of a line. This is a pattern being used to check that the input box only contains letters, and not spaces, numbers, or anything else. I have some regex experience from past jobs and SI 618.
 
 * **What's different about the syntax of conditional statements in JavaScript, compared to Python?**
 
+The condition being evaluated goes in between parentheses, while the actions if the condition is met go between two squiggly brackets and have semicolons after each one. Also, white space isn't neccessary.
+
 * **What do you think the `10000` refers to in the code `.fadeOut(10000)`?**
+
+This number represents an amount of time the paragraph tags and text inside show on screen before fading out -- after 10,000 miliseconds, the text disappears.
 
 * **What do you think is going on with the following code at the beginning of the program? Note that the most important thing to do for answering this question is to be thoughtful and clear, not to be absolutely correct:**
 
@@ -185,6 +204,9 @@ $(document).ready(function(){
     $("form").submit(function(event){
 ```
 
+The first line prevents the function from loading into memory until the rest of the HTML document is loaded into the browser -- until the document is 'ready' (learned in SI 539). I think the second line tells the browser to listen for when a form on the page is submitted (an event handler to tell when the submit button is pressed), activating a function when this event happens.
 
 * **Add some code to the `jquerylib_submit_example.html` file so that, if the input is valid and is specifically the text `hello`, rather than the visible output being `Nice!` in blue, the visible output should be `Hello to you too!`, also in blue, just like `Nice!` is.**
 	* *HINT:* You'll have to make some changes to the conditional statement, and possibly look up some JavaScript conditional syntax. You'll also need to look carefully at what generates visible output right now.
+
+Done -- please see the page code.
